@@ -1,0 +1,8 @@
+<section class="top-stories">
+  <p *ngIf="topStories.length < 1">Loading...</p>
+  <ol>
+    <li *ngFor="let story of topStories">
+      <app-story [storyData]="story"></app-story>
+    </li>
+  </ol>
+</section>

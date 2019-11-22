@@ -1,0 +1,25 @@
+<div class="story">
+  <button class="story__upvote">
+    <img src="https://news.ycombinator.com/grayarrow.gif"
+      alt="up vote"
+    >
+  </button>
+
+  <p class="story__details">
+    <span class="story__title">
+      <a [href]="url">{{title}}</a>
+    </span>
+    <span class="story__url" *ngIf="url">
+      (<a [href]="url">{{abbreviatedUrl}}</a>)
+    </span>
+    <br>
+
+    <span class="story__metadata">
+      {{score}} points by
+      <a href="#"> {{user}}</a>
+      <a href="#"> {{storyAge}} ago</a> |
+      <a href="#"> hide</a> |
+      <a href="#"> {{descendants}} comments</a>
+    </span>
+  </p>
+</div>

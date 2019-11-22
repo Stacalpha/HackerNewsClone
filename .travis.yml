@@ -1,0 +1,49 @@
+language: node_js
+
+node_js: 
+  - "stable"
+
+# Do not build these branches
+branches:
+  except:
+  - staging
+  #only: #whitelist example
+  #- master
+
+cache:
+  bundler: true
+  directories:
+    - "$HOME/.npm"
+    - "node_modules"
+
+env:
+  global:
+    #- CC_TEST_REPORTER_ID=ABC123
+
+install:
+  - npm install                         # Install npm dependencies
+
+# Set up git. 
+before_script:
+  - mv node_modules ..node_modules # Protect node_modules from the deletion. Pattern excludes files beginning with '..'
+  - rm -rf .[!.]* * # Delete all files and folders, including hidden ones (.git).
+  - mv ..node_modules node_modules # Restore node_modules
+  - git init
+  - git config user.name "Stacalpha"
+  - git config user.email "feranmiakinlade@gmail.com"
+  - git config --global push.default simple
+  - git branch -r
+  - git remote add origin https://${GH_TOKEN}@github.com/Stacalpha/buycoins.git
+  - git branch -r
+  - git fetch
+  - git branch -r
+  - git checkout ${TRAVIS_BRANCH}
+  - git branch -r
+
+script:
+  # Build project. 
+  - ng build --prod
+  # Push build output to github. 
+  - git add .
+  - git commit -m "Production build via travis-ci"
+  - git push origin staging

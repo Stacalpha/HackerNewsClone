@@ -1,0 +1,30 @@
+.story {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+
+  a:hover {
+    text-decoration: underline;
+  } 
+  
+  &__upvote {
+    background-color: transparent;
+    border: none;
+    display: block;
+    margin: 0 5px; 
+  }
+
+  &__title {
+    color: var(--text-color);
+    font-size: 1rem;
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__url {
+    white-space: nowrap;
+  }
+}
