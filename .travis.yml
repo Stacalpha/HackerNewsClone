@@ -33,7 +33,7 @@ before_script:
   - git config user.email "feranmiakinlade@gmail.com"
   - git config --global push.default simple
   - git branch -r
-  - git remote add origin https://${GH_TOKEN}@github.com/Stacalpha/buycoins.git
+  - git remote add origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
   - git branch -r
   - git fetch
   - git branch -r
